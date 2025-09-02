@@ -107,5 +107,6 @@ Se usará un enfoque ágil basado en **Scrum**, adaptado a sprints semanales par
 ---
 
 ## 🏁 Conclusiones
-El sistema permitirá **reducir el desperdicio alimentario**, optimizar inventarios en supermercados y **contribuir a la seguridad alimentaria** en Colombia.  
-Se espera que el proyecto sirva como **modelo replicable** en otras ciudades del país.  
+-El sistema permitirá **reducir el desperdicio alimentario**, optimizar inventarios en supermercados y **contribuir a la seguridad alimentaria** en Colombia.  
+
+-Se espera que el proyecto sirva como **modelo replicable** en otras ciudades del país.  
