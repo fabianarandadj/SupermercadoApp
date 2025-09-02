@@ -1,87 +1,111 @@
-# 📌 Plan de 8 Sprints – Sistema Web de Aprovechamiento Social de Alimentos (Supermercados)
+# 🍎 Proyecto: Sistema Web para el Control y Aprovechamiento Social de Alimentos Próximos a Vencer
 
-Este plan divide el proyecto en 8 sprints semanales.  
-Cada sprint tiene un 🎯 **objetivo** y ✅ **entregables** claros para mostrar avances constantes.  
-
----
-
-## 🚀 Sprint 1 – ⚙️ Setup e Infraestructura
-**🎯 Objetivo:** Dejar lista la base tecnológica del sistema.  
-**✅ Entregables:**
-- Docker Compose con FastAPI (backend), PostgreSQL (DB), Redis (cola), Worker, React (frontend) y Mailhog.  
-- Organización del proyecto (`/api`, `/frontend`, `/worker`).  
-- Endpoint `/health` para validar funcionamiento inicial.  
+## 👥 Integrantes
+- Pedro Pablo Paque  
+- Tito Fabian Aranda  
+- Carlos Daniel Culma  
 
 ---
 
-## 🚀 Sprint 2 – 🔐 Autenticación y Usuarios
-**🎯 Objetivo:** Gestionar usuarios con roles específicos.  
-**✅ Entregables:**
-- Endpoints `/auth/register` y `/auth/login`.  
-- Roles: **Supermercado (Donante)**, **ONG (Receptor)** y **Administrador**.  
-- Tokens JWT para autenticación.  
-- Frontend: formularios de login y registro.  
+## 📖 Resumen
+En Colombia se pierden anualmente cerca de **9,76 millones de toneladas de alimentos** (34 % de la producción nacional), lo que impacta la **seguridad alimentaria, la economía y el medio ambiente**.  
+Mientras tanto, más de la mitad de la población vive en inseguridad alimentaria, y toneladas de alimentos aptos se pierden por vencimientos, ineficiencias logísticas o falta de redistribución.  
+
+Este sistema busca **articular supermercados, fruterías, tiendas de barrio y organizaciones sociales**, mediante una plataforma web que:  
+- Registra productos próximos a vencer.  
+- Genera alertas automáticas.  
+- Facilita la venta anticipada a bajo costo.  
+- Promueve la donación a poblaciones vulnerables.  
 
 ---
 
-## 🚀 Sprint 3 – 📦 Gestión de Donaciones (CRUD)
-**🎯 Objetivo:** Permitir a supermercados registrar alimentos.  
-**✅ Entregables:**
-- Endpoint `POST /donations` (crear donación).  
-- Endpoint `GET /donations` (listar con filtro por vencimiento).  
-- Tabla `donations` en PostgreSQL.  
-- Frontend: páginas **Registrar Donación** y **Ver Donaciones**.  
+## ❗ Planteamiento del Problema
+El **34 % de la producción nacional** se desperdicia por falta de sistemas de control y redistribución.  
+Esto genera **pérdidas económicas, impacto ambiental** y **agrava la inseguridad alimentaria** de millones de personas.  
 
 ---
 
-## 🚀 Sprint 4 – 📍 Búsqueda por Ubicación y Urgencia
-**🎯 Objetivo:** Facilitar a ONGs encontrar donaciones cercanas y urgentes.  
-**✅ Entregables:**
-- Campos `lat`, `lng` en donaciones.  
-- Filtro de radio (ej. 10 km) usando **Haversine o PostGIS**.  
-- Ordenar resultados por **fecha de vencimiento**.  
-- Frontend: lista/mapa con donaciones cercanas.  
+## ✅ Justificación
+- **Social:** Aporta a la seguridad alimentaria mediante donaciones oportunas, en cumplimiento de la **Ley 1990 de 2019**.  
+- **Económica:** Reduce pérdidas en supermercados con alertas y ventas anticipadas.  
+- **Ambiental:** Disminuye desperdicios y emisiones asociadas.  
 
 ---
 
-## 🚀 Sprint 5 – 📝 Reservas de Alimentos
-**🎯 Objetivo:** Permitir que ONGs reserven donaciones.  
-**✅ Entregables:**
-- Endpoint `POST /donations/{id}/reserve`.  
-- Tabla `reservations` en PostgreSQL (estados: requested, confirmed, canceled).  
-- Endpoint `GET /reservations` para ver reservas.  
-- Frontend: botón **Reservar** y página **Mis Reservas**.  
+## 🎯 Objetivos
+
+### Objetivo General
+Diseñar e implementar un **sistema web** para reducir el desperdicio de alimentos próximos a vencer, mediante:  
+- Registro de inventarios.  
+- Alertas automáticas.  
+- Redistribución hacia poblaciones vulnerables.  
+
+### Objetivos Específicos
+- Diagnosticar causas de desperdicio en supermercados y fruterías.  
+- Diseñar la arquitectura del sistema (frontend, backend, BD).  
+- Implementar un repositorio digital para clasificación de alimentos.  
+- Desarrollar notificaciones que alerten **7 y 5 días antes** del vencimiento.  
 
 ---
 
-## 🚀 Sprint 6 – ⏱️ Worker y Expiración Automática
-**🎯 Objetivo:** Garantizar que los alimentos reservados no queden bloqueados.  
-**✅ Entregables:**
-- Worker con RQ procesando tareas en Redis.  
-- Expiración automática de reservas no confirmadas en 30 minutos.  
-- Reversión del estado de donación a “disponible”.  
-- Notificación simulada en consola o Mailhog.  
+## 📚 Marco Teórico y Contexto
+- En Colombia se pierden **9,76 millones de toneladas de alimentos/año** (34 % de la producción).  
+- El desperdicio contribuye al **10 % de las emisiones de gases de efecto invernadero**.  
+- La **Ley 1990 de 2019** exige donar alimentos próximos a vencer.  
+- Ejemplos de referencia: **EatCloud** y **Corabastos**.  
 
 ---
 
-## 🚀 Sprint 7 – 🔔 Notificaciones y Dashboard
-**🎯 Objetivo:** Dar visibilidad y comunicación a todos los actores.  
-**✅ Entregables:**
-- Notificaciones en eventos clave: creación, reserva, expiración.  
-- Endpoint `/me/dashboard` con métricas.  
-- Frontend: dashboard con gráficos (ej. Recharts o Chart.js).  
-- Métricas por rol:  
-  - Supermercado: kg donados, % aprovechamiento, productos más donados.  
-  - ONG: reservas activas, alimentos recibidos.  
-  - Admin: métricas globales.  
+## 🛠️ Metodología
+Se usará un enfoque ágil basado en **Scrum**, adaptado a sprints semanales para garantizar avances continuos y entregables demostrables.
+
+### Fases del trabajo
+1. **Levantamiento de requisitos:** identificación de necesidades en supermercados y ONGs.  
+2. **Diseño de arquitectura:** definición del frontend (React), backend (FastAPI/Django), worker y base de datos (PostgreSQL).  
+3. **Implementación incremental:** desarrollo en sprints de 1 semana con objetivos claros (setup, login, CRUD, reservas, worker, notificaciones, dashboard y demo final).  
+4. **Pruebas y validación:** ejecución de pruebas unitarias, validación funcional con datos de ejemplo y retroalimentación.  
+5. **Entrega y documentación:** presentación del flujo completo y entrega del informe final.  
+
+### Artefactos de Scrum
+- **Product Backlog:** lista de funcionalidades priorizadas.  
+- **Sprint Backlog:** tareas semanales definidas en cada sprint.  
+- **Daily Scrum (simulada):** revisión breve de avances y obstáculos.  
+- **Sprint Review:** presentación del incremento semanal.  
+- **Sprint Retrospective:** identificación de mejoras en cada ciclo.  
 
 ---
 
-## 🚀 Sprint 8 – 🏆 Demo Final y Optimización
-**🎯 Objetivo:** Mostrar el sistema funcionando con un caso realista de supermercado → ONG.  
-**✅ Entregables:**
-- Flujo completo probado: **Supermercado registra alimentos → ONG reserva → Confirmación/Expiración → Dashboard**.  
-- KPIs finales: % de alimentos entregados a tiempo, tasa de expiración, tiempo promedio de confirmación.  
-- Documentación final y demo lista para socializar.  
+## 📌 Alcance del Proyecto
+### Incluye:
+- Sistema web accesible desde navegador.  
+- Registro y control de productos con campos clave (fecha de vencimiento, cantidad, proveedor, estado).  
+- Alertas automáticas:  
+  - ⏳ 7 días antes → activar promociones.  
+  - ⏳ 5 días antes → destinar a donación.  
+- Reportes estadísticos de reducción de desperdicio.  
+- Cumplimiento de la **Ley 1990 de 2019**.  
+
+### No incluye (1ra fase):
+- App móvil nativa.  
+- Integración con ERP externos.  
+- Logística de transporte de alimentos.  
 
 ---
+
+## 📈 Impacto Esperado
+- **Social:** reducción del hambre en poblaciones vulnerables.  
+- **Económico:** menores pérdidas para supermercados.  
+- **Ambiental:** reducción de desperdicio y emisiones.  
+
+---
+
+## 🔧 Recursos y Herramientas
+- **Tecnológicos:** FastAPI/Django, React, PostgreSQL, Redis, Docker, Mailhog.  
+- **Humanos:** Equipo de desarrollo (backend, frontend, QA).  
+- **Financieros:** Infraestructura mínima en la nube/local.  
+
+---
+
+## 🏁 Conclusiones
+El sistema permitirá **reducir el desperdicio alimentario**, optimizar inventarios en supermercados y **contribuir a la seguridad alimentaria** en Colombia.  
+Se espera que el proyecto sirva como **modelo replicable** en otras ciudades del país.  
