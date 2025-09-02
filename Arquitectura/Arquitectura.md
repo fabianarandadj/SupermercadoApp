@@ -50,7 +50,4 @@ El sistema está diseñado bajo una **arquitectura modular distribuida**, separa
   - `worker` (RQ)  
   - `postgres` (Base de Datos)  
   - `redis` (Cola/Cache)  
-  - `mailhog` (Notificaciones de desarrollo)  
-- Permite levantar el entorno completo con un solo comando:  
-  ```bash
-  docker-compose up
+  - `mailhog` (Notificaciones de desarrollo)
