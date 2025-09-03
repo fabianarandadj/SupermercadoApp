@@ -7,7 +7,7 @@ Estos roles se almacenan en la tabla `users` mediante un campo `role` de tipo EN
 
 # 📊 Diagrama UML – Base de Datos
 
-![Diagrama UML](Diagrama20UML.jpg)
+![Diagrama UML](DiagramaUML.jpg)
 
 ---
 
