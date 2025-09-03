@@ -1,4 +1,4 @@
-# 🍎 Proyecto: Sistema Web para el Control y Aprovechamiento Social de Alimentos Próximos a Vencer
+## Sistema Web para el Control y Aprovechamiento Social de Alimentos Próximos a Vencer
 
 ## 👥 Integrantes
 - Pedro Pablo Paque  
